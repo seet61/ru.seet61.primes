@@ -22,21 +22,42 @@ public class Main {
         List list = new ArrayList<Integer>();
         int p = 2;
 
-        //Заполняем цикл п.1 .2
+        //Заполняем цикл п.1-2
         for (int i=2; i < 101; i++) {
             list.add(i);
         }
 
         System.out.println("Размер массива: " + list);
         List natural = list;
+        // п.3
+        natural = workWithList(p, natural);
+
+        // п.4-5
+        List temp = natural;
+        for (int i=0; i < natural.size(); i++) {
+            int di = (int) natural.get(i);
+            if (di != 2 && di >p) {
+                p = di;
+                natural = workWithList(p, natural);
+            }
+        }
+
+        System.out.println("Результат: " + natural );
+    }
+
+    /**
+     * Работаем с элементами массива
+     * @param p
+     * @param natural
+     * @return
+     */
+    private static List workWithList(int p, List natural) {
         for (int i=2;i<100;i++) {
             if (p*i < 101) {
                 natural = numberCleaning(p*i, natural);
             }
         }
-
-
-        System.out.println("Результат: " + natural );
+        return natural;
     }
 
     /**
