@@ -28,12 +28,12 @@ public class Main {
         }
 
         System.out.println("Размер массива: " + list);
-        List natural = list;
+        List natural = new ArrayList<Integer>();
+        natural.addAll(list.subList(0, list.size()));
         // п.3
         natural = workWithList(p, natural);
 
         // п.4-5
-        List temp = natural;
         for (int i=0; i < natural.size(); i++) {
             int di = (int) natural.get(i);
             if (di != 2 && di >p) {
@@ -42,7 +42,13 @@ public class Main {
             }
         }
 
-        System.out.println("Результат: " + natural );
+        System.out.println("Результат: " + natural);
+
+        System.out.println("Все остальные числа являются составными");
+        for (Object i : natural) {
+            list.remove(list.indexOf((int) i));
+        }
+        System.out.println("Результат: " + list);
     }
 
     /**
